@@ -2,7 +2,7 @@
   <img src="/keyboard.png" alt="react-keyboard-image"/>
 </p>
 
-# react-keyboard-input
+# react-keyboard-hooks
 
 React Hooks for keyboard inputs with Typescript
 
@@ -47,7 +47,7 @@ Note: regular unicode keys (ex. the alphabet) are the exact same, even though th
 const isKeyDown = useKey('Enter')
 ```
 
-the useKey hook takes a key value as a string, and returns a variable keyStatus that changes if the key is pressed or not.
+the useKey hook takes a key value as a string, and returns a boolean if the key is currently pressed/down or not.
 
 Example:
 
@@ -76,7 +76,7 @@ const Example: React.FC = () => {
 const isAnyKeyDown = useAnyKeys(['Enter', 'Tab', 'y'])
 ```
 
-the useAnyKeys hook takes an array of key values (as strings) and returns if **any** of the keys are currently pressed.
+the useAnyKeys hook takes an array of key values (as strings) and returns true if **any** of the keys are currently pressed.
 
 Example:
 
@@ -105,7 +105,7 @@ const Example: React.FC = () => {
 const allKeyDown = useAllKeys(['Enter', 'Tab', 'y'])
 ```
 
-the useAllKeys hook takes an array of key values (as strings) and returns if **all** of the keys are currently pressed.
+the useAllKeys hook takes an array of key values (as strings) and returns true if **all** of the keys are currently pressed.
 
 Example:
 
@@ -134,7 +134,7 @@ const Example: React.FC = () => {
 const keys = useKeys(['Enter', 'Tab', 'y'])
 ```
 
-the useKeys hook takes an array of key values (as strings) and returns an object with each key as the key (heh) and the value as a boolean if it is currently pressed.
+the useKeys hook takes an array of key values (as strings) and returns an object with each key as the key (heh) and the current down/up value as a boolean.
 
 Useful if you want more complicated logic with keypresses, or if you want to use a lot of keys at once (as useKey makes an event listener for each hook)
 
