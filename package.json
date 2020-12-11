@@ -1,10 +1,10 @@
 {
-  "name": "react-keyboard-input",
-  "version": "1.0.5",
+  "name": "react-keyboard-hooks",
+  "version": "1.0.6",
   "description": "simple react ts keyboard inputs",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
-  "repository": "https://github.com/Zireael13/react-keyboard-input",
+  "repository": "https://github.com/Zireael13/react-keyboard-hooks",
   "author": "Matt Wilkinson <mattwilki17@gmail.com>",
   "license": "MIT",
   "devDependencies": {
