@@ -2,7 +2,7 @@
   <img src="/keyboard.png" alt="react-keyboard-image"/>
 </p>
 
-# react-keyboard-input
+# react-keyboard-hooks
 
 React Hooks for keyboard inputs with Typescript
 
