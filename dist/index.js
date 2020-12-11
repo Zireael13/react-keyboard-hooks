@@ -11,16 +11,16 @@ var useSSR__default = /*#__PURE__*/_interopDefaultLegacy(useSSR);
 
 const useKey = (key) => {
     const { isBrowser } = useSSR__default['default']();
-    const [keyStatus, setKeyStatus] = react.useState('up');
+    const [isKeyDown, setisKeyDown] = react.useState(false);
     react.useEffect(() => {
         const keyDown = (e) => {
             if (e.key === key) {
-                setKeyStatus('down');
+                setisKeyDown(true);
             }
         };
         const keyUp = (e) => {
             if (e.key === key) {
-                setKeyStatus('up');
+                setisKeyDown(false);
             }
         };
         if (isBrowser) {
@@ -32,22 +32,22 @@ const useKey = (key) => {
             window.removeEventListener('keyup', keyUp);
         };
     }, [isBrowser, key]);
-    return { keyStatus };
+    return isKeyDown;
 };
-// TODO: edge case where multiple keys are pressed and one is released?
-// test push
+
+// returns an object with each key and its' current status. used internally by other hooks.
 const useKeys = (keys) => {
     const { isBrowser } = useSSR__default['default']();
-    const [keyStatus, setKeyStatus] = react.useState('up');
+    const [keyStatuses, setKeyStatuses] = react.useState(Object.fromEntries(keys.map((key) => [key, false])));
     react.useEffect(() => {
         const keyDown = (e) => {
-            if (keys.includes(e.key)) {
-                setKeyStatus('down');
+            if (e.key in keyStatuses) {
+                setKeyStatuses((prevState) => ({ ...prevState, [e.key]: true }));
             }
         };
         const keyUp = (e) => {
-            if (keys.includes(e.key)) {
-                setKeyStatus('up');
+            if (e.key in keyStatuses) {
+                setKeyStatuses((prevState) => ({ ...prevState, [e.key]: false }));
             }
         };
         if (isBrowser) {
@@ -60,10 +60,41 @@ const useKeys = (keys) => {
                 window.removeEventListener('keyup', keyUp);
             }
         };
-    }, [isBrowser, keys]);
-    return { keyStatus };
+    }, [isBrowser, keyStatuses]);
+    return keyStatuses;
 };
 
+// returns true if any of the keys are pressed.
+const useAnyKeys = (keys) => {
+    const [isKeyDown, setisKeyDown] = react.useState(false);
+    const keyStatuses = useKeys(keys);
+    react.useEffect(() => {
+        if (Object.values(keyStatuses).includes(true)) {
+            setisKeyDown(true);
+        }
+        else {
+            setisKeyDown(false);
+        }
+    }, [keyStatuses]);
+    return isKeyDown;
+};
+// returns true if all of the keys are pressed.
+const useAllKeys = (keys) => {
+    const [isKeyDown, setisKeyDown] = react.useState(false);
+    const keyStatuses = useKeys(keys);
+    react.useEffect(() => {
+        if (!Object.values(keyStatuses).includes(false)) {
+            setisKeyDown(true);
+        }
+        else {
+            setisKeyDown(false);
+        }
+    }, [keyStatuses]);
+    return isKeyDown;
+};
+
+exports.useAllKeys = useAllKeys;
+exports.useAnyKeys = useAnyKeys;
 exports.useKey = useKey;
 exports.useKeys = useKeys;
 //# sourceMappingURL=index.js.map

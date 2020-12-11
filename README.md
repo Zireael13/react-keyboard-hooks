@@ -53,6 +53,10 @@ const Example: React.FC = () => {
     console.log('key is down')
   }
 
+  if (keyStatus === 'up') {
+    console.log('key is up')
+  }
+
   return <div>{keyStatus}</div>
 }
 ```
@@ -76,6 +80,10 @@ const Example: React.FC = () => {
 
   if (keyStatus === 'down') {
     console.log('one of the keys is down')
+  }
+
+  if (keyStatus === 'up') {
+    console.log('')
   }
 
   return <div>{keyStatus}</div>

@@ -1,11 +1,4 @@
-export declare type keyStatuses = 'up' | 'down'
-export declare const useKey: (
-  key: string
-) => {
-  keyStatus: keyStatuses
-}
-export declare const useKeys: (
-  keys: string[]
-) => {
-  keyStatus: keyStatuses
-}
+export * from './useKey';
+export * from './types';
+export * from './useKeys';
+export * from './useLogicKeys';
