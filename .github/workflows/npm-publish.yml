@@ -17,11 +17,8 @@ jobs:
           node-version: '14.x'
           registry-url: 'https://registry.npmjs.org'
           # Defaults to the user or organization that owns the workflow file
-          #scope: '@octocat'
       - run: yarn
       - run: yarn test
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   publish-npm:
     needs: build
@@ -32,10 +29,11 @@ jobs:
         with:
           node-version: 14
           registry-url: https://registry.npmjs.org/
+          scope: '@octocat'
       - run: yarn
       - run: yarn publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
   publish-gpr:
     needs: build
@@ -46,6 +44,7 @@ jobs:
         with:
           node-version: 14
           registry-url: https://npm.pkg.github.com/
+          scope: '@octocat'
       - run: yarn
       - run: yarn publish
         env:
