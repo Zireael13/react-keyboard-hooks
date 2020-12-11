@@ -130,7 +130,9 @@ const Example: React.FC = () => {
 const keys = useKeys(['Enter', 'Tab', 'y'])
 ```
 
-the useKeys hook takes an array of key values (as strings) and returns an object with each key as the key (heh) and a boolean if it is currently pressed. Useful if you want more complicated logic with keypresses, or if you want to use a lot of keys at once (as useKey makes an event listener for each hook)
+the useKeys hook takes an array of key values (as strings) and returns an object with each key as the key (heh) and the value as a boolean if it is currently pressed.
+
+Useful if you want more complicated logic with keypresses, or if you want to use a lot of keys at once (as useKey makes an event listener for each hook)
 
 Example:
 
