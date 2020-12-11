@@ -1,6 +1,6 @@
 {
   "name": "react-keyboard-hooks",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "description": "simple react ts keyboard inputs",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
