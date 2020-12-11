@@ -32,6 +32,7 @@ export const useKey = (key: string): { keyStatus: string } => {
 }
 
 // TODO: edge case where multiple keys are pressed and one is released?
+// test push
 
 export const useKeys = (keys: string[]): { keyStatus: string } => {
   const { isBrowser } = useSSR()

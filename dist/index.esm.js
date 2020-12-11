@@ -27,6 +27,7 @@ const useKey = (key) => {
     return { keyStatus };
 };
 // TODO: edge case where multiple keys are pressed and one is released?
+// test push
 const useKeys = (keys) => {
     const { isBrowser } = useSSR();
     const [keyStatus, setKeyStatus] = useState('up');
@@ -46,8 +47,10 @@ const useKeys = (keys) => {
             window.addEventListener('keyup', keyUp);
         }
         return () => {
-            window.removeEventListener('keydown', keyDown);
-            window.removeEventListener('keyup', keyUp);
+            if (isBrowser) {
+                window.removeEventListener('keydown', keyDown);
+                window.removeEventListener('keyup', keyUp);
+            }
         };
     }, [isBrowser, keys]);
     return { keyStatus };
