@@ -72,7 +72,7 @@ test('useKey Down then Up', () => {
   expect(result.current.keyStatus).toBe('up')
 })
 
-const cases = [['Enter'], ['Escape'], ['a'], ['A']]
+const cases = [['Enter'], ['Escape'], ['a'], ['A'], [' ']]
 
 test.each(cases)(`useKey(%s)`, (key) => {
   const { result } = renderHook(() => useKey(key))
