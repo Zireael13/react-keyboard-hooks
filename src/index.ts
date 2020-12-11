@@ -55,8 +55,10 @@ export const useKeys = (keys: string[]): { keyStatus: string } => {
     }
 
     return () => {
-      window.removeEventListener('keydown', keyDown)
-      window.removeEventListener('keyup', keyUp)
+      if (isBrowser) {
+        window.removeEventListener('keydown', keyDown)
+        window.removeEventListener('keyup', keyUp)
+      }
     }
   }, [isBrowser, keys])
 
