@@ -42,15 +42,15 @@ the useKey hook takes a key value as a string, and returns a variable keyStatus 
 
 Example:
 
-```typescriptjsx
+```typescript
 import React from 'react'
 import { useKey } from 'react-keyboard-hooks'
 
 const Example: React.FC = () => {
   const { keyStatus } = useKey(' ')
 
-  if(keyStatus === 'down') {
-      console.log('key is down')
+  if (keyStatus === 'down') {
+    console.log('key is down')
   }
 
   return <div>{keyStatus}</div>
@@ -59,7 +59,7 @@ const Example: React.FC = () => {
 
 ### useKeys
 
-```typescriptjsx
+```typescript
 const { keyStatus } = useKeys(['Enter', 'Tab', 'y'])
 ```
 
@@ -67,15 +67,15 @@ the useKeys hook takes an array of key values (as strings) and returns if **any*
 
 Example:
 
-```typescriptjsx
+```typescript
 import React from 'react'
 import { useKeys } from 'react-keyboard-hooks'
 
 const Example: React.FC = () => {
   const { keyStatus } = useKeys(['Enter', 'Tab', 'y'])
 
-  if(keyStatus === 'down') {
-      console.log('one of the keys is down')
+  if (keyStatus === 'down') {
+    console.log('one of the keys is down')
   }
 
   return <div>{keyStatus}</div>
