@@ -59,10 +59,27 @@ const Example: React.FC = () => {
 
 ### useKeys
 
-```typescript
+```typescriptjsx
 const { keyStatus } = useKeys(['Enter', 'Tab', 'y'])
 ```
 
 the useKeys hook takes an array of key values (as strings) and returns if **any** of the keys are currently pressed.
+
+Example:
+
+```typescriptjsx
+import React from 'react'
+import { useKeys } from 'react-keyboard-hooks'
+
+const Example: React.FC = () => {
+  const { keyStatus } = useKeys(['Enter', 'Tab', 'y'])
+
+  if(keyStatus === 'down') {
+      console.log('one of the keys is down')
+  }
+
+  return <div>{keyStatus}</div>
+}
+```
 
 If some people use this i'll add some more features like only returning down if all of the keys are pressed.
