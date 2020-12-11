@@ -1,3 +1,5 @@
+![react-keyboard-input](/keyboard.png)
+
 # react-keyboard-input
 
 React Hooks for keyboard inputs with Typescript
