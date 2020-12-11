@@ -19,7 +19,7 @@ jobs:
           # Defaults to the user or organization that owns the workflow file
           #scope: '@octocat'
       - run: yarn
-      - run: yarn publish
+      - run: yarn test
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
