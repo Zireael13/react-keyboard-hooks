@@ -28,7 +28,7 @@ yarn install react-keyboard-hooks
 
 ### Parameters
 
-Look up key names on [the MDN web docs]https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values. That is the only parameter you need!
+Look up key names on [the MDN web docs](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values). That is the only parameter you need!
 
 Note: regular unicode keys (ex. the alphabet) are the exact same, even though they aren't listed on the MDN docs.
 
