@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react'
 import useSSR from 'use-ssr'
 import { keyStatuses } from './types'
 
-// returns an object with each key and its' current status. used internally by other hooks.
+// returns an object with each key and its' current status.
 
 export const useKeys = (keys: string[]): keyStatuses => {
   const { isBrowser } = useSSR()
-  const [keyStatuses, setKeyStatuses] = useState<keyStatuses>(
+  const [keyStatuses, setKeyStatuses] = useState<keyStatuses>(() =>
     Object.fromEntries(keys.map((key) => [key, false]))
   )
 
