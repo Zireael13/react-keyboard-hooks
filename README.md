@@ -1,4 +1,6 @@
-![react-keyboard-input](/keyboard.png)
+<p align="center">
+  <img src="/keyboard.png" alt="react-keyboard-image"/>
+</p>
 
 # react-keyboard-input
 
