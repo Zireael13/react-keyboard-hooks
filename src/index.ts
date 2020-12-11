@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
 import useSSR from 'use-ssr'
 
-export const useKey = (key: string): { keyStatus: string } => {
+export type keyStatuses = 'up' | 'down'
+
+export const useKey = (key: string): { keyStatus: keyStatuses } => {
   const { isBrowser } = useSSR()
-  const [keyStatus, setKeyStatus] = useState('up')
+  const [keyStatus, setKeyStatus] = useState<keyStatuses>('up')
 
   useEffect(() => {
     const keyDown = (e: KeyboardEvent): void => {
@@ -34,9 +36,9 @@ export const useKey = (key: string): { keyStatus: string } => {
 // TODO: edge case where multiple keys are pressed and one is released?
 // test push
 
-export const useKeys = (keys: string[]): { keyStatus: string } => {
+export const useKeys = (keys: string[]): { keyStatus: keyStatuses } => {
   const { isBrowser } = useSSR()
-  const [keyStatus, setKeyStatus] = useState('up')
+  const [keyStatus, setKeyStatus] = useState<keyStatuses>('up')
 
   useEffect(() => {
     const keyDown = (e: KeyboardEvent): void => {

@@ -19,6 +19,7 @@
     "target": "esnext",
     "noImplicitAny": true,
     "noImplicitReturns": true,
+    "declaration": true
 
   },
   "exclude": ["node_modules"],
