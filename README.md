@@ -45,9 +45,13 @@ Note: regular unicode keys (ex. the alphabet) are the exact same, even though th
 
 ```typescript
 const isKeyDown = useKey('Enter')
+# or
+useKey('Enter', callbackFn)
 ```
 
 the useKey hook takes a key value as a string, and returns a boolean if the key is currently pressed/down or not.
+
+Optionally you can use a callback function that runs on the key down instead.
 
 Example:
 
@@ -70,6 +74,26 @@ const Example: React.FC = () => {
 }
 ```
 
+Callback Example:
+
+```typescript
+import React, { useState } from 'react'
+import { useKey } from 'react-keyboard-hooks'
+
+const Example: React.FC = () => {
+  const [keyPresses, setKeyPresses] = useState(0)
+
+  const callbackFn = () => {
+    console.log('key is down')
+    setKeyPresses((previousPresses) => (previousPresses += 1))
+  }
+
+  useKey('Enter', callbackFn)
+
+  return <div>{keyPresses}</div>
+}
+```
+
 ### useAnyKeys
 
 ```typescript
@@ -77,6 +101,10 @@ const isAnyKeyDown = useAnyKeys(['Enter', 'Tab', 'y'])
 ```
 
 the useAnyKeys hook takes an array of key values (as strings) and returns true if **any** of the keys are currently pressed.
+
+Optionally you can use a callback function that runs if any of the keys down instead.
+
+Note: callback doesn't run multiple times if multiple keys are down at the **same time**.
 
 Example:
 
@@ -99,6 +127,26 @@ const Example: React.FC = () => {
 }
 ```
 
+Callback Example:
+
+```typescript
+import React, { useState } from 'react'
+import { useAnyKeys } from 'react-keyboard-hooks'
+
+const Example: React.FC = () => {
+  const [keyPresses, setKeyPresses] = useState(0)
+
+  const callbackFn = () => {
+    console.log('at least one key is down')
+    setKeyPresses((previousPresses) => (previousPresses += 1))
+  }
+
+  useAnyKeys(['Enter', 'Tab', 'y'], callbackFn)
+
+  return <div>{keyPresses}</div>
+}
+```
+
 ### useAllKeys
 
 ```typescript
@@ -106,6 +154,8 @@ const allKeyDown = useAllKeys(['Enter', 'Tab', 'y'])
 ```
 
 the useAllKeys hook takes an array of key values (as strings) and returns true if **all** of the keys are currently pressed.
+
+Optionally you can use a callback function that runs if all of the keys are down instead.
 
 Example:
 
@@ -125,6 +175,26 @@ const Example: React.FC = () => {
   }
 
   return <div>{allKeysDown ? 'down' : 'up'}</div>
+}
+```
+
+Callback Example:
+
+```typescript
+import React, { useState } from 'react'
+import { useAllKeys } from 'react-keyboard-hooks'
+
+const Example: React.FC = () => {
+  const [keyPresses, setKeyPresses] = useState(0)
+
+  const callbackFn = () => {
+    console.log('all keys are down')
+    setKeyPresses((previousPresses) => (previousPresses += 1))
+  }
+
+  useAllKeys(['Enter', 'Tab', 'y'], callbackFn)
+
+  return <div>{keyPresses}</div>
 }
 ```
 
