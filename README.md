@@ -47,6 +47,8 @@ Note: regular unicode keys (ex. the alphabet) are the exact same, even though th
 const isKeyDown = useKey('Enter')
 # or
 useKey('Enter', callbackFn)
+# or both
+const isKeyDown = useKey('Enter', callbackFn)
 ```
 
 the useKey hook takes a key value as a string, and returns a boolean if the key is currently pressed/down or not.
@@ -98,6 +100,10 @@ const Example: React.FC = () => {
 
 ```typescript
 const isAnyKeyDown = useAnyKeys(['Enter', 'Tab', 'y'])
+# or
+useAnyKeys(['Enter', 'Tab', 'y'], callbackFn)
+# or both
+const isAnyKeyDown = useAnyKeys(['Enter', 'Tab', 'y'], callbackFn)
 ```
 
 the useAnyKeys hook takes an array of key values (as strings) and returns true if **any** of the keys are currently pressed.
@@ -151,6 +157,10 @@ const Example: React.FC = () => {
 
 ```typescript
 const allKeyDown = useAllKeys(['Enter', 'Tab', 'y'])
+# or
+useAllKeys(['Enter', 'Tab', 'y'], callbackFn)
+# or both
+const allKeyDown = useAllKeys(['Enter', 'Tab', 'y'], callbackFn)
 ```
 
 the useAllKeys hook takes an array of key values (as strings) and returns true if **all** of the keys are currently pressed.
