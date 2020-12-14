@@ -83,3 +83,46 @@ test.each(cases)(`useKey(%s)`, (key) => {
 
   expect(result.current).toBe(false)
 })
+
+test('useKey Down Callback', () => {
+  const cb = jest.fn()
+  const key = '1'
+
+  const { result } = renderHook(() => useKey(key, cb))
+
+  const keyDown = createKeyDown(key)
+
+  act(() => {
+    window.dispatchEvent(keyDown)
+  })
+
+  expect(result.current).toBe(true)
+  expect(cb.mock.calls.length).toBe(1)
+})
+
+test('useKey Down Up Repeatedly Callback', () => {
+  const cb = jest.fn()
+  const key = '1'
+
+  const { result } = renderHook(() => useKey(key, cb))
+
+  const keyDown = createKeyDown(key)
+  const keyUp = createKeyUp(key)
+
+  act(() => {
+    window.dispatchEvent(keyDown)
+    window.dispatchEvent(keyUp)
+
+    window.dispatchEvent(keyDown)
+    window.dispatchEvent(keyUp)
+
+    window.dispatchEvent(keyDown)
+    window.dispatchEvent(keyUp)
+
+    window.dispatchEvent(keyDown)
+    window.dispatchEvent(keyUp)
+  })
+
+  expect(result.current).toBe(false)
+  expect(cb.mock.calls.length).toBe(4)
+})

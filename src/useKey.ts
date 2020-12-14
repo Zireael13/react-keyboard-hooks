@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import useSSR from 'use-ssr'
 
-export const useKey = (key: string): boolean => {
+export const useKey = (key: string, cb?: () => void): boolean => {
   const { isBrowser } = useSSR()
   const [isKeyDown, setisKeyDown] = useState(false)
 
@@ -9,6 +9,9 @@ export const useKey = (key: string): boolean => {
     const keyDown = (e: KeyboardEvent): void => {
       if (e.key === key) {
         setisKeyDown(true)
+        if (cb) {
+          cb()
+        }
       }
     }
     const keyUp = (e: KeyboardEvent): void => {
@@ -26,7 +29,7 @@ export const useKey = (key: string): boolean => {
       window.removeEventListener('keydown', keyDown)
       window.removeEventListener('keyup', keyUp)
     }
-  }, [isBrowser, key])
+  }, [isBrowser, key, cb])
 
   return isKeyDown
 }

@@ -147,11 +147,11 @@ import { useKeys } from 'react-keyboard-hooks'
 const Example: React.FC = () => {
   const keys = useKeys(['Enter', 'Tab', 'y'])
 
-  if (keys['Enter']) {
+  if (keys.Enter) {
     console.log('Enter key is pressed')
   }
 
-  if (keys['Tab']) {
+  if (keys.Tab) {
     console.log('Tab key is pressed')
   }
 
