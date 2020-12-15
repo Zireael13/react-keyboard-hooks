@@ -23,6 +23,8 @@ Use these hooks if you want an easy way to add keyboard inputs to your applicati
 
 Compatible with React 16.8 and newer.
 
+Does not support Internet Explorer for certain special keys such as Escape. If someone wants to add a map for the old key values feel free to create a PR, but I don't think IE is worth the time anymore.
+
 ## Installation
 
 To install the package (assuming you have React installed already):
