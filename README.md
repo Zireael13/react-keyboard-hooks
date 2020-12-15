@@ -21,7 +21,7 @@ Use these hooks if you want an easy way to add keyboard inputs to your applicati
 - Dead simple usage. Just pass in single key or array of keys as strings
 - Well tested with [Jest](https://jestjs.io/) & the [React Hooks Testing Library](https://github.com/testing-library/react-hooks-testing-library)
 
-Compatible with React 16 and newer.
+Compatible with React 16.8 and newer.
 
 ## Installation
 
