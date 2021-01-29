@@ -32,7 +32,7 @@ To install the package (assuming you have React installed already):
 ```sh
 npm install react-keyboard-hooks
 # or
-yarn install react-keyboard-hooks
+yarn add react-keyboard-hooks
 ```
 
 ## Usage
